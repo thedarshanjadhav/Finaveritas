@@ -13,12 +13,12 @@ export default function Navbar() {
 
   function handleSetActive(section) {
     setActiveSection(section);
-    setIsOpen(false); // Close the menu when a section is clicked
+    setIsOpen(false);
   }
 
   return (
-    <header className="fixed w-full bg-blue-600 text-white flex justify-between items-center px-6 z-50 shadow-lg">
-      <div className="w-40 md:w-80 h-auto">
+    <header className="fixed w-full bg-blue-600 text-white flex justify-between items-center md:px-6 px-3 z-50 shadow-lg">
+      <div className="w-48 md:w-80 h-auto">
         <a href="#hero" onClick={() => handleSetActive("#hero")}>
           <img src={Logo} alt="company logo" />
         </a>
