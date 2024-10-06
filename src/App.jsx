@@ -9,7 +9,7 @@ import Services from "./components/Services";
 function App() {
   return (
     <>
-      <div className="scroll-smooth">
+      <div className="scroll-smooth w-full overflow-hidden">
         <Navbar />
         <Hero />
         <AboutUs />

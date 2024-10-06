@@ -14,7 +14,7 @@ export default function AboutUs() {
   return (
     <section
       id="about"
-      className="min-h-screen bg-gray-100 p-10 flex items-center justify-center mt-2"
+      className="min-h-screen bg-gray-100 p-10 flex items-center justify-center"
     >
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-5">
         {/* Left Content */}

@@ -14,7 +14,7 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="min-h-screen bg-white p-10 flex items-center justify-center"
+      className="min-h-screen bg-white-200 p-10 flex items-center justify-center"
     >
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-5">
         {/* Left Image */}

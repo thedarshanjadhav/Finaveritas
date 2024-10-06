@@ -17,7 +17,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="fixed w-full bg-blue-600 text-white flex justify-between items-center md:px-6 px-3 z-50 shadow-lg">
+    <header className="fixed w-full overflow-hidden bg-blue-600 text-white flex justify-between items-center md:px-6 px-3 md:py-0 py-2 z-50 shadow-lg ">
       <div className="w-48 md:w-80 h-auto">
         <a href="#hero" onClick={() => handleSetActive("#hero")}>
           <img src={Logo} alt="company logo" />
