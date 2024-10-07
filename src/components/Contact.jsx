@@ -17,7 +17,7 @@ const Contact = () => {
       className="min-h-screen bg-gray-100 p-10 flex items-center justify-center"
       ref={contactRef}
     >
-      <div className="container mx-auto px-5 py-16">
+      <div className="container mx-auto py-16">
         {/* Contact Heading */}
         <motion.h2
           className="text-4xl font-bold mb-10 text-center"

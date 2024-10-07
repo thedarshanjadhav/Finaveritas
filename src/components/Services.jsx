@@ -16,7 +16,7 @@ const Services = () => {
       id="services"
       className="min-h-screen bg-white-200 p-10 flex items-center justify-center"
     >
-      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-5">
+      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-2">
         {/* Left Image */}
         <motion.div
           className="lg:w-1/3 mt-10 lg:mt-0"

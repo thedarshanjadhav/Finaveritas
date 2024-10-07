@@ -16,7 +16,7 @@ export default function AboutUs() {
       id="about"
       className="min-h-screen bg-gray-100 p-10 flex items-center justify-center"
     >
-      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-5">
+      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-2">
         {/* Left Content */}
         <motion.div
           className="lg:w-1/2"
