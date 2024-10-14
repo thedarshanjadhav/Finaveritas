@@ -1,21 +1,41 @@
-import { useRef, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const contactRef = useRef(null);
+  const contactRef = useRef(null); // Reference for the section
 
-  const handleVisibility = (inView) => {
-    if (inView) {
-      setIsVisible(true);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setIsVisible(true); // Trigger animation when in view
+        } else {
+          setIsVisible(false); // Reset if you want to re-trigger on scroll
+        }
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the section is visible
+      }
+    );
+
+    if (contactRef.current) {
+      observer.observe(contactRef.current); // Observe the section
     }
-  };
+
+    return () => {
+      if (contactRef.current) {
+        observer.unobserve(contactRef.current); // Clean up the observer
+      }
+    };
+  }, []);
 
   return (
     <section
       id="contact"
       className="min-h-screen bg-gray-100 p-10 flex items-center justify-center"
-      ref={contactRef}
+      ref={contactRef} // Attach the ref to the section
     >
       <div className="container mx-auto py-16">
         {/* Contact Heading */}
@@ -24,7 +44,6 @@ const Contact = () => {
           initial={{ opacity: 0, y: -50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          onViewportEnter={() => handleVisibility(true)}
         >
           Contact Us
         </motion.h2>
@@ -35,7 +54,6 @@ const Contact = () => {
           initial={{ opacity: 0, x: -200 }}
           animate={isVisible ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, ease: "easeOut" }}
-          onViewportEnter={() => handleVisibility(true)}
         >
           <form className="space-y-6">
             <div className="flex flex-col">

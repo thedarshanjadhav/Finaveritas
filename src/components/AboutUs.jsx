@@ -1,19 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import AboutImg from "../assets/Images/AboutUs.png";
 
 export default function AboutUs() {
   const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null); // Create a ref to the section
 
-  const handleVisibility = (inView) => {
-    if (inView) {
-      setIsVisible(true);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setIsVisible(true); // Trigger animation when in view
+        } else {
+          setIsVisible(false); // Reset animation when out of view if desired
+        }
+      },
+      {
+        threshold: 0.1, // Adjust the threshold as needed
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current); // Observe the section
     }
-  };
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current); // Clean up the observer
+      }
+    };
+  }, []);
 
   return (
     <section
       id="about"
+      ref={sectionRef} // Attach the ref to the section
       className="min-h-screen bg-gray-100 p-10 flex items-center justify-center"
     >
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-2">
@@ -23,7 +45,6 @@ export default function AboutUs() {
           initial={{ opacity: 0, y: 200 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, ease: "easeOut" }}
-          onViewportEnter={() => handleVisibility(true)}
         >
           <h2 className="text-4xl font-bold mb-4">About Us</h2>
           <p className="text-lg mb-6">
@@ -47,7 +68,6 @@ export default function AboutUs() {
           initial={{ opacity: 0, y: 200 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          onViewportEnter={() => handleVisibility(true)}
         >
           <img src={AboutImg} alt="About Us" />
         </motion.div>
